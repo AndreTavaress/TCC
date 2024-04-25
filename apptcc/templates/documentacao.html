@@ -1,0 +1,22 @@
+{% extends 'home.html'%}
+{% block conteudo%}
+
+<h1>Números de 1 a 100</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for numero in numeros %}
+        <tr>
+            <td>{{ numero }}</td>
+            <td><a href="{{ link_base }}{{ numero }}">{{ link_base }}{{ numero }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
