@@ -1,22 +1,28 @@
 {% extends 'home.html'%}
-{% block conteudo%}
+{% block conteudo %}
 
-<h1>Números de 1 a 100</h1>
-<table border="1">
-    <thead>
-        <tr>
-            <th>Número</th>
-            <th>Link</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for numero in numeros %}
-        <tr>
-            <td>{{ numero }}</td>
-            <td><a href="{{ link_base }}{{ numero }}">{{ link_base }}{{ numero }}</a></td>
-        </tr>
+<style>
+    .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Alinha os botões ao centro */
+    }
+
+    .btn-container .btn {
+        margin: 5px; /* Adiciona margem entre os botões */
+    }
+</style>
+
+<div class="container-fluid">
+    <h1>Endereçamento Livre</h1>
+
+    <div class="btn-container">
+        {% for endereco in endereco_ip %}
+            <button type="button" class="btn btn-outline-success" >
+                {{ endereco }}
+            </button>
         {% endfor %}
-    </tbody>
-</table>
+    </div>
+</div>
 
 {% endblock %}
