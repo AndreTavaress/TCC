@@ -36,3 +36,9 @@ class Service(models.Model):
 
     def __str__(self):
         return f"Dispositivo IP: {self.dispositivo} - Lista de serviços: {self.lista_de_coisas}"
+    
+class Offline(models.Model):
+    ip = models.CharField(max_length = 16)
+    
+    def __str__(self):
+        return f"IP: {self.ip}"
