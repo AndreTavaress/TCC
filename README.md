@@ -1,4 +1,4 @@
-##################### TCC ANDRÉ TAVARES #####################
+# TCC ANDRÉ TAVARES 
 
 * Projeto desenvolvido com Python e Framwork Django
 * Voltando a area de redes e telecom
