@@ -4,7 +4,7 @@ from ping3 import ping
 import socket
 from .service import scan_ports
 
-from apptcc.models import Dispositivo, Offline
+from apptcc.models import Dispositivo,Scanner
 
 def check_ip_status(ip):
     response_time = ping(ip, timeout=0.1)
@@ -34,8 +34,8 @@ def process_ip(ip):
             )
         scan_ports(teste)
     else:
-        Offline.objects.create(
-            ip=ip
+        Scanner.objects.create(
+            off=ip
         )
 
 def main(target_network, subnet_mask):

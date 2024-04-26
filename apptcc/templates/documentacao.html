@@ -15,11 +15,19 @@
 
 <div class="container-fluid">
     <h1>Endereçamento Livre</h1>
+    <form>
+        <label for="meu-select">Selecione um item:</label>
+        <select id="meu-select" name="meu-select">
+            {% for address in address_bloco %}
+                <option value="{{ address.id }}">{{ address.rede }}</option>
+            {% endfor %}
+        </select>
+    </form>
 
     <div class="btn-container">
-        {% for endereco in endereco_ip %}
-            <button type="button" class="btn btn-outline-success" >
-                {{ endereco }}
+        {% for address in address_bloco %}
+            <button type="button" class="btn btn-success" >
+                {{ address.off }}
             </button>
         {% endfor %}
     </div>

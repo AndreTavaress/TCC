@@ -35,3 +35,4 @@ class DispositivoAdmin(admin.ModelAdmin):
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('dispositivo',"lista_de_coisas",)
+    
