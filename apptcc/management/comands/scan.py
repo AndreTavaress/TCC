@@ -4,7 +4,11 @@ from ping3 import ping
 import socket
 from .service import scan_ports
 
+<<<<<<< HEAD
 from apptcc.models import Dispositivo
+=======
+from apptcc.models import Dispositivo, Offline
+>>>>>>> e23a37e5f37178f8dba8a893188fe2847a08fed0
 
 def check_ip_status(ip):
     response_time = ping(ip, timeout=0.1)
@@ -33,7 +37,14 @@ def process_ip(ip):
             status=status
             )
         scan_ports(teste)
+<<<<<<< HEAD
     
+=======
+    else:
+        Offline.objects.create(
+            ip=ip
+        )
+>>>>>>> e23a37e5f37178f8dba8a893188fe2847a08fed0
 
 def main(target_network, subnet_mask):
 #    target_network = input("Digite o endereço de rede (por exemplo, 192.168.0.0): ")
