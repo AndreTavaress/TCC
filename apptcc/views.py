@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from .models import Dispositivo, Scanner
+from .models import Dispositivo, Scanner, Service
 
 from .models import Dispositivo
 
@@ -21,7 +21,10 @@ def home(request):
     })
 
 def servico(request):
-    return render(request,'servicos.html')
+    service = Service.objects.all()
+    return render(request,'servicos.html', {
+        'service' : service
+    })
 
 def monitoramento(request):
     return render(request,'monitoramento.html')

@@ -1,6 +1,19 @@
-{% extends 'home.html'%}
+{% extends 'base.html'%}
 {% block conteudo %}
 
-<H1>Serviços</H1>
+{% for services in service %}
+<div class="card" style="margin-top: 20px;">
+    
+        <div class="card-header">
+            {{ services.dispositivo }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Serviços ativo no Equipamento</h5>
+            <p class="card-text">{{ services.lista_de_coisas }}</p>
+        </div>
+    
+</div>
+{% endfor %}
+
 
 {% endblock %}
