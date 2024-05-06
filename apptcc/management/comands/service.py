@@ -2,7 +2,6 @@ import socket
 
 from apptcc.models import Service
 
-# Função para escanear as portas de serviço de um determinado IP
 def scan_ports(ip):
     target_ip = ip
     active_services = []
@@ -68,18 +67,14 @@ def scan_ports(ip):
         3128: "HTTP Proxy",
         6667: "IRC (Internet Relay Chat)",
         3268: "Microsoft Exchange",
-        # Adicione outras portas de serviço conforme necessário
     }
 
     try:
         for port, service in service_ports.items():
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(0.1)  # Define um tempo limite curto para a conexão
-
-            # Tenta conectar à porta específica
+            sock.settimeout(0.1) 
             result = sock.connect_ex((target_ip.ip, port))
             if result == 0:
-                # Porta está aberta
                 active_services.append((port, service))
                 
             sock.close()
@@ -97,7 +92,7 @@ def scan_ports(ip):
     )
     return active_services
 
-# Exemplo de uso:
+
 if __name__ == "__main__":
     scan_ports()
 

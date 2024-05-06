@@ -13,9 +13,11 @@ def documentacao(request):
     return render(request, 'documentacao.html', {'endereco_ip' : endereco})
     
 def home(request):
+    endereco = Dispositivo.objects.count()
     bloco = Scanner.objects.count()
     return render(request, 'home.html',{
-        'bloco' : bloco
+        'bloco' : bloco,
+        'endereco' : endereco
     })
 
 def servico(request):
@@ -23,7 +25,3 @@ def servico(request):
 
 def monitoramento(request):
     return render(request,'monitoramento.html')
-
-    
-def home(request):
-    return render(request, 'home.html')

@@ -4,11 +4,9 @@ from ping3 import ping
 import socket
 from .service import scan_ports
 
-<<<<<<< HEAD
+
 from apptcc.models import Dispositivo
-=======
-from apptcc.models import Dispositivo, Offline
->>>>>>> e23a37e5f37178f8dba8a893188fe2847a08fed0
+
 
 def check_ip_status(ip):
     response_time = ping(ip, timeout=0.1)
@@ -31,24 +29,15 @@ def process_ip(ip):
 
     if status.lower() == "online":
         
-        teste = Dispositivo.objects.create(
+        equipamento = Dispositivo.objects.create(
             ip=ip, 
             nome_do_dispositivo=device_name, 
             status=status
             )
-        scan_ports(teste)
-<<<<<<< HEAD
-    
-=======
-    else:
-        Offline.objects.create(
-            ip=ip
-        )
->>>>>>> e23a37e5f37178f8dba8a893188fe2847a08fed0
+        scan_ports(equipamento)
+
 
 def main(target_network, subnet_mask):
-#    target_network = input("Digite o endereço de rede (por exemplo, 192.168.0.0): ")
-#    subnet_mask = int(input("Digite a máscara de sub-rede (por exemplo, 24): "))
     
     target_block = f"{target_network}/{subnet_mask}"
     ip_network = ipaddress.ip_network(target_block, strict=False)

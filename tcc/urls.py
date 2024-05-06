@@ -22,9 +22,6 @@ urlpatterns = [
     path('',views.home),
     path('admin/', admin.site.urls),
     path('documentacao/',views.documentacao,name='documentacao'),
-<<<<<<< HEAD
     path('monitoramento/',views.monitoramento,name='monitoramento'),
     path('servico/',views.servico,name='servico'),
-=======
->>>>>>> e23a37e5f37178f8dba8a893188fe2847a08fed0
 ]
