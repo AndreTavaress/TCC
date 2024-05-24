@@ -10,7 +10,9 @@ def documentacao(request):
 #    return render(request, 'documentacao.html', {'numeros': numeros, 'link_base': link_base})
 
     endereco = Dispositivo.objects.all()
-    return render(request, 'documentacao.html', {'endereco_ip' : endereco})
+    scan = Scanner.objects.all()
+    return render(request, 'documentacao.html', {'endereco_ip' : endereco,
+                                                 'scan' : scan})
     
 def home(request):
     endereco = Dispositivo.objects.count()
@@ -27,4 +29,7 @@ def servico(request):
     })
 
 def monitoramento(request):
-    return render(request,'monitoramento.html')
+    dispositivo = Dispositivo.objects.all()
+    return render(request,'monitoramento.html', {
+        'dispositivo' : dispositivo
+    })

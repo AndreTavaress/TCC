@@ -9,19 +9,29 @@
     }
 
     .btn-container .btn {
+        padding: 5px;
         margin: 5px; /* Adiciona margem entre os botões */
+    }
+    .form-select {
+            width: 300px; /* Ajuste a largura conforme necessário */
+            height: 35px; /* Ajuste a altura conforme necessário */
+            padding: 5px;
+            font-size: 15px; /* Ajuste o tamanho da fonte conforme necessário */
     }
 </style>
 
 <div class="container-fluid">
     <h1>Endereçamento Livre</h1>
-
+    <select class="form-select" enable>
+    {% for ip in scan %}
+        <option selected>Selecione um endereço IP</option>
+        <option value="1">{{ ip.rede }}/{{ ip.mascara }}</option>
+    {% endfor %}
+    </select>
     <div class="btn-container">
         {% for endereco in endereco_ip %}
             <button type="button" class="btn btn-primary" >
-
                 {{ endereco.ip }}
-
             </button>
         {% endfor %}
     </div>

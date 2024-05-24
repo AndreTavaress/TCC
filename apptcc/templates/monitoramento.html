@@ -1,6 +1,44 @@
 {% extends 'base.html'%}
 {% block conteudo %}
 
+<style>
+    .table {
+        width: 80%; /* Ajuste a largura conforme necessário */
+        margin: 0 auto; /* Centraliza a tabela na página */
+        border-collapse: collapse; /* Remove espaços entre as células */
+    }
+    
+    .table th, .table td {
+        border: 1px solid #ddd; /* Adiciona borda às células */
+        padding: 8px; /* Adiciona padding às células */
+        text-align: center; /* Alinha o texto à esquerda */
+    }
+    
+    .table th {
+        background-color: #f2f2f2; /* Define uma cor de fundo para o cabeçalho */
+        font-weight: bold; /* Deixa o texto do cabeçalho em negrito */
+    }
+</style>
+
 <h1>Monitoramento</h1>
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Dispositivo</th>
+        <th scope="col">IP</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for endereco in dispositivo %}
+      <tr>
+        <td>{{ endereco.nome_do_dispositivo }}</td>
+        <td>{{ endereco.ip }}</td>
+        <td>{{ endereco.status }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
 
 {% endblock %}
