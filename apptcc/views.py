@@ -1,18 +1,21 @@
 from django.shortcuts import render, redirect
 
-from .models import Dispositivo, Scanner, Service
-
+from .models import Dispositivo, Scanner, Service, Offline
+from apptcc.management.comands.scan_tempo import check_cidr_block 
+from django.core.cache import cache
 from .models import Dispositivo
 
-def documentacao(request): 
-#    numeros = range(1, 101)
-#    link_base = '/admin/apptcc/dispositivo/add/?numero='  # Adicionando o marcador de posição para o número
-#    return render(request, 'documentacao.html', {'numeros': numeros, 'link_base': link_base})
+CACHE_KEY_OFFLINE = 'offline_ips'
 
-    endereco = Dispositivo.objects.all()
+def documentacao(request): 
     scan = Scanner.objects.all()
-    return render(request, 'documentacao.html', {'endereco_ip' : endereco,
-                                                 'scan' : scan})
+    off = Offline.objects.all()
+        
+    if request.method == 'POST':
+        check_cidr_block(request.POST.get('selected_ip'))
+        return render(request, 'documentacao.html', {'off' : off})
+
+    return render(request, 'documentacao.html', {'scan': scan})
     
 def home(request):
     endereco = Dispositivo.objects.count()

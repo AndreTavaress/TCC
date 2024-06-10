@@ -5,36 +5,52 @@
     .btn-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center; /* Alinha os botões ao centro */
+        justify-content: center;
+        /* Alinha os botões ao centro */
     }
 
     .btn-container .btn {
         padding: 5px;
-        margin: 5px; /* Adiciona margem entre os botões */
+        margin: 5px;
+        /* Adiciona margem entre os botões */
     }
+
     .form-select {
-            width: 300px; /* Ajuste a largura conforme necessário */
-            height: 35px; /* Ajuste a altura conforme necessário */
-            padding: 5px;
-            font-size: 15px; /* Ajuste o tamanho da fonte conforme necessário */
+        width: 300px;
+        /* Ajuste a largura conforme necessário */
+        height: 35px;
+        /* Ajuste a altura conforme necessário */
+        padding: 5px;
+        font-size: 15px;
+        /* Ajuste o tamanho da fonte conforme necessário */
+    }
+
+    .btn-success {
+        margin-top: 10px;
     }
 </style>
 
 <div class="container-fluid">
     <h1>Endereçamento Livre</h1>
-    <select class="form-select" enable>
-    {% for ip in scan %}
-        <option selected>Selecione um endereço IP</option>
-        <option value="1">{{ ip.rede }}/{{ ip.mascara }}</option>
-    {% endfor %}
-    </select>
+    <form method="post" action="{% url 'documentacao' %}">
+        {% csrf_token %}
+        <select class="form-select" name="selected_ip">
+
+            <option selected disabled>Selecione um endereço IP</option>
+            {% for ip in scan %}
+            <option value="{{ ip.rede }}/{{ ip.mascara }}">{{ ip.rede }}/{{ ip.mascara }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
     <div class="btn-container">
-        {% for endereco in endereco_ip %}
-            <button type="button" class="btn btn-primary" >
-                {{ endereco.ip }}
-            </button>
+        {% for ip in off %}
+        <button type="button" class="btn btn-primary">
+            {{ ip.ip }}
+        </button>
         {% endfor %}
     </div>
+
 </div>
 
 {% endblock %}
