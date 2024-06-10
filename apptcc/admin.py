@@ -6,9 +6,13 @@ from apptcc.management.comands.service import scan_ports
 @admin.action(description="Executar Scanner")
 def executar_scanner(modeladmin, request, queryset):
     for item in queryset:
-        rede = item.rede
-        mascara = item.mascara
-        scan_main(rede, mascara)
+        if item.ativo.lower() == 'sim':
+            rede = item.rede
+            mascara = item.mascara
+            scan_main(rede, mascara)
+            
+        else:
+            modeladmin.error(request, "Bloco IP selecionado se encontra desativado!")
  
     modeladmin.message_user(request, f"Scanner executado com sucesso para {queryset.count()} itens.")
 

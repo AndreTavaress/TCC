@@ -13,9 +13,11 @@ class Scanner(models.Model):
         return (self.rede+'\n'+self.mascara)  
     
 class Dispositivo(models.Model):
+    choices = (('online','Online'),
+               ('offline','Offline'))   
     ip = models.CharField(max_length = 16)
     nome_do_dispositivo = models.CharField(max_length=100)
-    status = models.CharField(max_length=50)
+    status = models.CharField(max_length=50, choices=choices)
 
     def __str__(self):
         return f"IP: {self.ip} - Nome do dispositivo: {self.nome_do_dispositivo}"
