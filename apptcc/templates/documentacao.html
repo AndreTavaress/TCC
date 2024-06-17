@@ -45,9 +45,9 @@
     </form>
     <div class="btn-container">
         {% for ip in off %}
-        <button href="/apptcc/dispositivo/add/" type="button" class="btn btn-primary">
+        <a href="/admin/apptcc/dispositivo/add/?ip={{ ip.ip }}" class="btn btn-primary">
             {{ ip.ip }}
-        </button>
+        </a>
         {% endfor %}
     </div>
 
