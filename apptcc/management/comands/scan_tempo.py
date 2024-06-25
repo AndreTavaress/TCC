@@ -5,7 +5,9 @@ from ping3 import ping
 from apptcc.models import Offline
 
 def check_cidr_block(cidr_block):
+    
     Offline.objects.all().delete()
+    
     def check_ip_status(ip):
         response_time = ping(ip, timeout=0.1)
         if response_time is not None:
